@@ -15,13 +15,13 @@ void ScreenShot::paintEvent(QPaintEvent *event)
     if(!iscapturing)
         return;
     QPainter painter(this);
-    painter.setOpacity(0.5);
-    painter.fillRect(rect(), QColor(0, 0, 0));
-    painter.setCompositionMode(QPainter::CompositionMode_Clear);
-    painter.fillRect(QRect(start_pos, end_pos), Qt::transparent);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    painter.setPen(Qt::green);
-    painter.drawRect(QRect(start_pos, end_pos));
+    painter.setOpacity(0.5);    //设置透明度
+    painter.fillRect(rect(), QColor(0, 0, 0));    //填充整个窗口界面
+    painter.setCompositionMode(QPainter::CompositionMode_Clear);    //设置清除模式以便后序选择的截屏区域能够显示原图
+    painter.fillRect(QRect(start_pos, end_pos), Qt::transparent);    //设置选中区域
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);    //恢复原绘图模式
+    painter.setPen(Qt::green);    //设置选中区域颜色
+    painter.drawRect(QRect(start_pos, end_pos));  //设置选中区域  
 }
 
 void ScreenShot::mousePressEvent(QMouseEvent *event)
